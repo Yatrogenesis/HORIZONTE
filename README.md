@@ -23,3 +23,13 @@ Disclaimer: este proyecto es conceptual y no implica ni garantiza conciencia rea
 - Datasets sintéticos: docs/DATASETS_SINTETICOS.md
 - Gobernanza: docs/GOBERNANZA.md
 \nProyecto abierto a contribuciones: ver CONTRIBUTING.md, CODE_OF_CONDUCT.md y SECURITY.md
+## Diagrama Arquitectonico
+
+![Diagrama HORIZONTE](docs/DIAGRAMA_HORIZONTE.svg)
+
+Si no se renderiza, usa el archivo Mermaid docs/DIAGRAMA_HORIZONTE.mmd.
+
+## Notebooks y Datasets
+- Notebook de exploracion: 
+otebooks/Exploracion_MITG_AMD.ipynb
+- Generar datasets sinteticos: python scripts/generate_datasets.py (crea data/summary.jsonl)

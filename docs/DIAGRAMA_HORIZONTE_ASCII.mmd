@@ -1,0 +1,53 @@
+flowchart LR
+  subgraph SCH[Substrato Computacional Hibrido (SCH)]
+    PNC[Procesadores Neuromorficos Caoticos]
+    TENS[Unidades Tensoriales]
+    PNC -- a(t), eventos --> TENS
+    TENS -- neuromodulacion kappa,sigma,g,A --> PNC
+  end
+
+  subgraph MITG[Modulo de Integracion Topologica Global (MIT-G)]
+    TP[Topologia Persistente]
+    GR[Grafos]
+    PHI[Estimadores Phi^]
+    TP --> PHI
+    GR --> PHI
+  end
+
+  subgraph AMD[Motor Auto-Modelo Dinamico (AMD)]
+    KOOP[EDMD/Koopman]
+    MPC[Control Homeostatico]
+    KOOP --> MPC
+  end
+
+  subgraph ECA[Ecosistema Co-Evolutivo de Agentes (ECA)]
+    AG[Agentes MARL]
+    MR[Mercado de Atencion]
+    AG <--> MR
+  end
+
+  subgraph ICGQ[Interfaz de Compilacion Geo-Cuantica (ICG-Q)]
+    MAP[Mapeo a Hamiltoniano]
+    QAOA[QAOA/VQE]
+    MAP --> QAOA
+  end
+
+  SCH -- a(t), G_t, X_t --> MITG
+  MITG -- Phi^, coaliciones, metricas --> AMD
+  AMD -- d(kappa), d(sigma), d(g) --> SCH
+  ECA -- micro-reconfigs --> SCH
+  ECA -- relevancia --> MITG
+  AMD -- politicas de seguridad --> ECA
+  ICGQ -- recableado A* --> SCH
+  MITG -- robustez topologica --> ICGQ
+
+  LOG[(Telemetria/Logs)]
+  GOV[[Kill-switch/Politicas]]
+  SCH --> LOG
+  MITG --> LOG
+  AMD --> LOG
+  ECA --> LOG
+  ICGQ --> LOG
+  GOV --> AMD
+  GOV --> SCH
+  GOV --> ECA

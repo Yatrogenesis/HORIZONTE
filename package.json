@@ -1,0 +1,29 @@
+{
+  "name": "horizonte",
+  "version": "1.0.0",
+  "description": "Arquitectura y artefactos para el diseño de un sistema con conciencia emergente (exploratorio e investigativo). Este repositorio contiene el prompt maestro y documentación de apoyo.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yatrogenesis/HORIZONTE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Yatrogenesis/HORIZONTE/issues"
+  },
+  "homepage": "https://github.com/Yatrogenesis/HORIZONTE#readme",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.12.0",
+    "puppeteer": "^24.23.0"
+  }
+}

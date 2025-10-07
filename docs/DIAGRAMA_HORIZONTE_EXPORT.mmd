@@ -1,0 +1,24 @@
+flowchart LR
+ SCH[Substrato Hibrido]
+ MITG[Integracion Topologica]
+ AMD[Auto-Modelo]
+ ECA[Ecosistema Agentes]
+ ICGQ[Compilacion Geo Cuantica]
+ LOG[(Telemetria)]
+ GOV[[Politicas]]
+ SCH --> MITG
+ MITG --> AMD
+ AMD --> SCH
+ ECA --> SCH
+ ECA --> MITG
+ AMD --> ECA
+ ICGQ --> SCH
+ MITG --> ICGQ
+ SCH --> LOG
+ MITG --> LOG
+ AMD --> LOG
+ ECA --> LOG
+ ICGQ --> LOG
+ GOV --> AMD
+ GOV --> SCH
+ GOV --> ECA

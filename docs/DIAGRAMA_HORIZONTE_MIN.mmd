@@ -1,0 +1,25 @@
+flowchart LR
+  SCH[Substrato Computacional Hibrido]
+  MITG[Integracion Topologica Global]
+  AMD[Auto-Modelo Dinamico]
+  ECA[Ecosistema de Agentes]
+  ICGQ[Compilacion Geo-Cuantica]
+  LOG[(Telemetria)]
+  GOV[[Kill-switch/Politicas]]
+
+  SCH -->|a(t), G_t, X_t| MITG
+  MITG -->|Phi^, coaliciones| AMD
+  AMD -->|control kappa,sigma,g| SCH
+  ECA -->|micro-reconfigs| SCH
+  ECA -->|relevancia| MITG
+  AMD -->|limites| ECA
+  ICGQ -->|recableado A*| SCH
+  MITG -->|robustez topo| ICGQ
+  SCH --> LOG
+  MITG --> LOG
+  AMD --> LOG
+  ECA --> LOG
+  ICGQ --> LOG
+  GOV --> AMD
+  GOV --> SCH
+  GOV --> ECA

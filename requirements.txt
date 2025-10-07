@@ -3,3 +3,4 @@ scipy
 scikit-learn
 networkx
 gudhi; platform_system!="Windows"  # opcional; instalar si disponible
+matplotlib
