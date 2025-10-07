@@ -33,3 +33,6 @@ Si no se renderiza, usa el archivo Mermaid docs/DIAGRAMA_HORIZONTE.mmd.
 - Notebook de exploracion: 
 otebooks/Exploracion_MITG_AMD.ipynb
 - Generar datasets sinteticos: python scripts/generate_datasets.py (crea data/summary.jsonl)
+- Regimenes y LZC: 
+otebooks/Regimenes_y_LZC.ipynb\n- Topologia Persistente (PH): 
+otebooks/Topologia_Persistente.ipynb\n\n## Diagramas\n- SVG: docs/DIAGRAMA_HORIZONTE.svg\n- PNG: docs/DIAGRAMA_HORIZONTE.png\n
