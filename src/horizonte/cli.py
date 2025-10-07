@@ -1,4 +1,6 @@
 import numpy as np
+import argparse
+from collections import deque
 from .core.config import SimConfig
 from .sch.cml import CML, CMLParams
 from .mitg.topology import analyze_window
@@ -13,17 +15,22 @@ def run_episode(cfg: SimConfig = SimConfig()):
     eca = ECASwarm(n=max(8, cfg.n//32), seed=cfg.seed)
     series = []
     phi_vals = []
+    # buffer temporal para EDMD con al menos 2 observaciones
+    Zg_buf: deque = deque(maxlen=10)
     for t in range(cfg.steps):
         x = cml.step()
         series.append(x.copy())
         if t>=cfg.window and t % 10 == 0:
             win = np.array(series[-cfg.window:])  # (W, N)
-            # resumen simple (F): media y var por nodo
-            Z = np.stack([win.mean(0), win.var(0)], axis=-1).reshape(win.shape[1], -1)
             phi_hat, _ = analyze_window(win)
             phi_vals.append(phi_hat)
-            if len(phi_vals)>5:
-                Zg = np.array([[np.mean(phi_vals[-5:]), np.std(phi_vals[-5:])]])
+            # construir punto de estado global (media y std de phi reciente)
+            if len(phi_vals)>=1:
+                Zg_point = np.array([np.mean(phi_vals[-5:]) if len(phi_vals)>=5 else phi_hat,
+                                     np.std(phi_vals[-5:]) if len(phi_vals)>=5 else 0.0], dtype=float)
+                Zg_buf.append(Zg_point)
+            if len(Zg_buf) >= 2:
+                Zg = np.vstack(Zg_buf)
                 K, rho = amd.fit_edmd(Zg)
                 ctrl = amd.control_signal(rho)
                 eco = eca.propose()
@@ -41,7 +48,17 @@ def run_episode(cfg: SimConfig = SimConfig()):
 
 
 def main():
-    run_episode()
+    ap = argparse.ArgumentParser(description='HORIZONTE simulation episode')
+    ap.add_argument('--n', type=int, default=SimConfig.n, help='nodos del CML')
+    ap.add_argument('--r', type=float, default=SimConfig.r, help='parametro mapa logistico')
+    ap.add_argument('--kappa', type=float, default=SimConfig.kappa, help='acoplamiento')
+    ap.add_argument('--noise', type=float, default=SimConfig.noise, help='ruido')
+    ap.add_argument('--steps', type=int, default=SimConfig.steps, help='pasos simulacion')
+    ap.add_argument('--seed', type=int, default=SimConfig.seed, help='semilla')
+    ap.add_argument('--window', type=int, default=SimConfig.window, help='ventana analisis')
+    args = ap.parse_args()
+    cfg = SimConfig(n=args.n, r=args.r, kappa=args.kappa, noise=args.noise, steps=args.steps, seed=args.seed, window=args.window)
+    run_episode(cfg)
 
 if __name__ == '__main__':
     main()

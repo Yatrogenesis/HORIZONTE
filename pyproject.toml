@@ -16,5 +16,16 @@ dependencies = [
   "matplotlib",
 ]
 
+[project.optional-dependencies]
+tda = [
+  "ripser>=0.6.8",
+  # gudhi es opcional y puede no estar disponible en Windows
+]
+dev = [
+  "pytest",
+  "mypy",
+  "ruff",
+]
+
 [project.scripts]
 horizonte = "horizonte.cli:main"

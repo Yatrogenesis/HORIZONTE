@@ -16,7 +16,9 @@ class AMD:
         return np.concatenate([z, z**2], axis=-1)
 
     def fit_edmd(self, Z: np.ndarray):
-        # Z shape: (T, F); build shifted pairs
+        # Z shape: (T, F) with T>=2; build shifted pairs
+        if Z.ndim != 2 or Z.shape[0] < 2:
+            raise ValueError("EDMD requires Z with shape (T>=2, F)")
         Phi = self.features(Z[:-1])
         Phi_next = self.features(Z[1:])
         G = Phi.T @ Phi + 1e-6*np.eye(Phi.shape[1])
