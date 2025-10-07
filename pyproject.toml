@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "horizonte"
+version = "0.1.0"
+description = "Proyecto HORIZONTE: simulación y métricas para conciencia emergente (experimental)"
+authors = [{name="HORIZONTE Team"}]
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "scipy",
+  "scikit-learn",
+  "networkx",
+]
+
+[project.scripts]
+horizonte = "horizonte.cli:main"

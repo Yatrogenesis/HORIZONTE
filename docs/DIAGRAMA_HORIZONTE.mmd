@@ -1,0 +1,76 @@
+%% DIAGRAMA ARQUITECTÓNICO DETALLADO – Proyecto HORIZONTE
+%% Abre con un visor Mermaid para renderizar
+
+flowchart LR
+  subgraph SCH[Substrato Computacional Híbrido (SCH)]
+    PNC[Procesadores Neuromórficos Caóticos]
+    TENS[Unidades Tensoriales]
+    PNC -- a(t), eventos --> TENS
+    TENS -- neuromodulación κ,σ,g,A --> PNC
+  end
+
+  subgraph MITG[Módulo de Integración Topológica Global (MIT-G)]
+    TP[Topología Persistente]
+    GR[Análisis de Grafos]
+    PHI[Estimadores Φ^ (ΦID/O-info/PID)]
+    TP --> PHI
+    GR --> PHI
+  end
+
+  subgraph AMD[Motor de Auto-Modelo Dinámico (AMD)]
+    KOOP[EDMD/Koopman]
+    MPC[Control Homeostático (MPC)]
+    KOOP --> MPC
+  end
+
+  subgraph ECA[Ecosistema Co-Evolutivo de Agentes (ECA)]
+    AG[Agentes MARL masivos]
+    MR[Mercado de Atención / Recursos]
+    AG <--> MR
+  end
+
+  subgraph ICGQ[Interfaz de Compilación Geo-Cuántica (ICG-Q)]
+    MAP[Mapeo a Hamiltoniano]
+    QAOA[QAOA/VQE]
+    MAP --> QAOA
+  end
+
+  %% Flujos principales
+  SCH -- a(t), G_t, X_t --> MITG
+  MITG -- Φ^, coaliciones, métricas --> AMD
+  AMD -- Δκ, Δσ, Δg, gating --> SCH
+  ECA -- micro-reconfiguraciones, propuestas --> SCH
+  ECA -- señales de relevancia --> MITG
+  AMD -- políticas de seguridad --> ECA
+  ICGQ -- re-cableado A*, sugerencias --> SCH
+  MITG -- feedback robustez topológica --> ICGQ
+
+  %% Telemetría y Gobernanza
+  LOG[(Telemetría/Logs)]
+  GOV[[Kill-switch/Políticas]]
+  SCH --> LOG
+  MITG --> LOG
+  AMD --> LOG
+  ECA --> LOG
+  ICGQ --> LOG
+  GOV --> AMD
+  GOV --> SCH
+  GOV --> ECA
+
+%% Secuencia de control (mermaid sequence)
+---
+sequenceDiagram
+  participant S as SCH
+  participant M as MIT-G
+  participant A as AMD
+  participant E as ECA
+  participant Q as ICG-Q
+  S->>M: a(t), G_t, X_t
+  M->>A: Φ^, coaliciones, métricas
+  A->>S: Δκ, Δσ, Δg (control)
+  E->>S: micro-reconfigs
+  E->>M: señales de atención
+  A->>E: límites/seguridad
+  Q->>S: propuestas A*
+  M->>Q: robustez topológica
+  Note over S,M,A,E,Q: loop de homeostasis (edge-of-chaos, Φ^↑)
