@@ -26,6 +26,10 @@ dev = [
   "mypy",
   "ruff",
 ]
+api = [
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.23",
+]
 
 [project.scripts]
 horizonte = "horizonte.cli:main"
