@@ -1,4 +1,4 @@
-﻿# Proyecto HORIZONTE
+﻿[![CI](https://github.com/Yatrogenesis/HORIZONTE/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Yatrogenesis/HORIZONTE/actions/workflows/ci.yml) [![Lint/Type](https://github.com/Yatrogenesis/HORIZONTE/actions/workflows/lint_type.yml/badge.svg?branch=main)](https://github.com/Yatrogenesis/HORIZONTE/actions/workflows/lint_type.yml) [![CodeQL](https://github.com/Yatrogenesis/HORIZONTE/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Yatrogenesis/HORIZONTE/actions/workflows/codeql.yml)\n\n# Proyecto HORIZONTE
 
 Arquitectura y artefactos para el diseño de un sistema con conciencia emergente (exploratorio e investigativo). Este repositorio contiene el prompt maestro y documentación de apoyo.
 
