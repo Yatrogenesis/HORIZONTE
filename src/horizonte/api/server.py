@@ -82,4 +82,5 @@ def api_iit30_cause(payload: IIT30In):
     n = int(np.log2(tp.shape[0]) + 1e-9)
     res = phi_cause_iit30(tp, n, payload.mechanism, payload.purview, payload.m_state)
     return {"phi": res.phi, "partition": [list(res.partition[0]), list(res.partition[1]), list(res.partition[2]), list(res.partition[3])], "full": res.full.tolist(), "factored": res.factored.tolist()}
-
+\n\n# CLI runner\ndef run(host: str = '127.0.0.1', port: int = 8000):\n    try:\n        import uvicorn  # type: ignore\n    except Exception as e:\n        raise SystemExit('uvicorn not installed. Install with pip install -e .[api]')\n    uvicorn.run(app, host=host, port=port)\n
+\n\n# CLI runner\ndef run(host: str = '127.0.0.1', port: int = 8000):\n    try:\n        import uvicorn  # type: ignore\n    except Exception as e:\n        raise SystemExit('uvicorn not installed. Install with pip install -e .[api]')\n    uvicorn.run(app, host=host, port=port)\n

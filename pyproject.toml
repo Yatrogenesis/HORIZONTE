@@ -3,6 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
+readme = 'README.md'
 name = "horizonte"
 version = "0.1.0"
 description = "Proyecto HORIZONTE: simulación y métricas para conciencia emergente (experimental)"
@@ -32,4 +33,7 @@ api = [
 ]
 
 [project.scripts]
+ horizonte = 'horizonte.cli:main'
+ horizonte-api = 'horizonte.api.server:run'
 horizonte = "horizonte.cli:main"
+

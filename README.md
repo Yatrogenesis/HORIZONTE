@@ -36,3 +36,24 @@ otebooks/Exploracion_MITG_AMD.ipynb
 - Regimenes y LZC: 
 otebooks/Regimenes_y_LZC.ipynb\n- Topologia Persistente (PH): 
 otebooks/Topologia_Persistente.ipynb\n\n## Diagramas\n- SVG: docs/DIAGRAMA_HORIZONTE.svg\n- PNG: docs/DIAGRAMA_HORIZONTE.png\n
+## Inicio Rápido
+
+- Entorno e instalación:
+  - `python -m venv .venv && .\.venv\Scripts\Activate.ps1`
+  - `pip install -e .[dev,api]`
+- Ejecutar simulación CLI:
+  - `horizonte --n 128 --steps 400 --kappa 0.14 --window 50`
+- Correr tests:
+  - `pytest -q`
+
+## Uso de la API
+
+- Iniciar servidor:
+  - `horizonte-api` (requiere `[api]` instalado)
+- Ejemplos:
+  - O-information (POST /metrics/oinfo):
+    Body JSON: `{ "window": [[...],[...],...], "knn_k": 5 }`
+  - Φ_SI (POST /iit/phi_si):
+    Body JSON: `{ "tpm": [[...],[...],...] }`
+  - IIT 3.0 efecto/causa (POST /iit30/effect | /iit30/cause):
+    Body JSON: `{ "tpm": [[...],[...]], "mechanism": [..], "purview":[..], "m_state":[..] }`
